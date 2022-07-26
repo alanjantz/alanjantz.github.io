@@ -1,27 +1,115 @@
+:root {
+  --background-color: #dfd9ce;
+  --background-dot-color: #b0aba195;
+  --content-background-color: #e6e3d9;
+  --border-color: #d6cfc3;
+  --font-color: #1e1e1c;
+  --font-color-lighter: #46463b80;
+}
+
+html {
+  background: repeating-linear-gradient(
+      to bottom,
+      #ffffff00 0,
+      #ffffff00 32px,
+      #ffffff 32px,
+      #ffffff 32px,
+      #ffffff00 32px
+    ),
+    repeating-linear-gradient(
+      to right,
+      #ffffff00 0,
+      #ffffff00 32px,
+      #ffffff 32px,
+      #ffffff 32px,
+      #ffffff 32px
+    ),
+    radial-gradient(
+        circle at 5px 5px,
+        var(--background-dot-color) 1px,
+        var(--background-color) 1px,
+        var(--background-color) 1px
+      )
+      0 0 / 8px 8px;
+  background-blend-mode: multiply, normal, normal, normal;
+}
+
 body {
+  padding: 50px;
   margin: 0;
-  background-color: #1d1e22;
+  font-family: "Nunito", sans-serif;
+  color: var(--font-color);
+  text-align: center;
 }
 
-#parallax {
-  position: relative;
+.content-outer {
+  overflow-y: auto;
+  margin: auto;
+  display: flex;
+  border: 2px solid var(--border-color);
+  background-color: var(--content-background-color);
   width: 100%;
-  height: 100vh;
-  background-image: url("images/background.jpg");
-  background-position: center top;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: cover;
+  max-width: 700px;
+  height: fit-content;
+  border-radius: 15px;
+  box-shadow: 0 3px 5px rgb(0 0 0 / 5%);
 }
 
-h1 {
-  position: absolute;
-  top: 47%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: #fff;
-  font-family: "Source Sans Pro", sans-serif;
-  opacity: 0.75;
-  font-size: 50px;
-  font-weight: 300;
+.center {
+  width: 100%;
+}
+
+.column {
+  display: inline-block;
+  padding: 35px 15px;
+}
+
+.header {
+  display: block;
+  margin-bottom: 35px;
+}
+
+.header h1,
+.header h4 {
+  margin: 0px;
+}
+
+.header h4 {
+  font-weight: lighter;
+}
+
+.header .description {
+  color: var(--font-color-lighter);
+}
+
+.content-inner ul {
+  margin: 0 !important;
+  padding: 0px;
+}
+
+.content-inner li {
+  background: rgb(0 0 0 / 5%);
+  padding: 5px;
+  border-radius: 3px;
+  font-weight: bolder;
+}
+
+.content-inner li:hover {
+  cursor: pointer;
+  background: rgb(0 0 0 / 35%);
+}
+
+.content-inner ul,
+.content-inner li {
+  list-style: none;
+  display: inline-block;
+}
+
+a {
+  text-decoration: none;
+  color: black !important;
+}
+
+* {
+  box-sizing: border-box;
 }
