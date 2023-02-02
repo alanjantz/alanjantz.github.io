@@ -30,22 +30,45 @@ body {
 .content-outer {
   width: 100%;
   max-width: 700px;
-  height: fit-content;
   display: flex;
   background-color: white;
   border: 1px solid #dddddd;
+  align-items: stretch;
 }
 
 .sidebar {
   background: #262833;
   color: #f2f2f2;
-  max-width: 100px;
-  flex-grow: 1;
+}
+
+.sidebar .material-icons-outlined {
+  font-family: 'Material Icons';
+  width: 100%;
+  font-size: 4em;
+  padding: 20px;
+  display: block;
+  text-align: center;
+}
+
+.sidebar ul.menu {
+  list-style: none;
+  padding-left: 0;
+  min-width: 150px;
+}
+
+.sidebar ul.menu li {
+  padding: 5px 8px;
+  background-color: rgba(0, 0, 0, 0.5);
+  margin: 10px;
+  border-radius: 4px;
+}
+
+.sidebar ul.menu li a {
+  color: white !important;
 }
 
 .content {
   max-height: 500px;
-  flex-grow: 1;
   overflow-y: auto;
   padding: 20px;
 }
@@ -69,13 +92,20 @@ body {
   box-shadow: inset 0 0 0 3px white;
 }
 
-.content h1 {
+.content h1,
+.content h2 {
   font-family: "Special Elite", sans-serif;
+}
+
+.content h2 {
+  font-size: 0.8em;
+  margin-top: -10px;
 }
 
 .content h3 {
   text-transform: uppercase;
   font-size: 0.8em;
+  padding-top: 20px;
 }
 
 .content article {
@@ -89,7 +119,6 @@ body {
 
 a {
   text-decoration: none;
-  color: black !important;
 }
 
 * {
