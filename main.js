@@ -49,9 +49,9 @@ function dragElement(element) {
 }
 
 function setDraggableElementsInitialPosition() {
-  setInitialPosition(document.getElementById("corgi"), -100, 400);
-  setInitialPosition(document.getElementById("loona"), -300, -100);
-  setInitialPosition(document.getElementById("pachimari"), 300, -180);
+  setInitialPosition(document.getElementById("corgi"), 305, -180);
+  setInitialPosition(document.getElementById("loona"), -280, -100);
+  setInitialPosition(document.getElementById("pachimari"), -150, 400);
   setInitialPosition(document.getElementById("sushi"), -100, -360);
 }
 
