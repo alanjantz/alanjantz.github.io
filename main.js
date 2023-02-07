@@ -1,16 +1,63 @@
 (function () {
-  // Add event listener
-  document.addEventListener("mousemove", parallax);
-  const elem = document.querySelector("#parallax");
-  // Magic happens here
-  function parallax(e) {
-    let _w = window.innerWidth / 2;
-    let _h = window.innerHeight / 2;
-    let _mouseX = e.clientX;
-    let _mouseY = e.clientY;
-    let _depth1 = `${50 - (_mouseX - _w) * 0.02}% ${
-      50 - (_mouseY - _h) * 0.01
-    }%`;
-    elem.style.backgroundPosition = `${_depth1}`;
+  setDraggableElementsInitialPosition();
+
+  var draggableElements = document.getElementsByClassName("draggable");
+  for (let i = 0; i < draggableElements.length; i++) {
+    dragElement(draggableElements[i]);
   }
 })();
+
+window.addEventListener('resize', function(event) {
+  setDraggableElementsInitialPosition();
+}, true);
+
+function dragElement(element) {
+  var pos1 = 0,
+    pos2 = 0,
+    pos3 = 0,
+    pos4 = 0;
+  if (element) {
+    element.onmousedown = dragMouseDown;
+  } else {
+    element.onmousedown = dragMouseDown;
+  }
+
+  function dragMouseDown(e) {
+    e = e || window.event;
+    e.preventDefault();
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    document.onmouseup = closeDragElement;
+    document.onmousemove = elementDrag;
+  }
+
+  function elementDrag(e) {
+    e = e || window.event;
+    e.preventDefault();
+    pos1 = pos3 - e.clientX;
+    pos2 = pos4 - e.clientY;
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    element.style.top = element.offsetTop - pos2 + "px";
+    element.style.left = element.offsetLeft - pos1 + "px";
+  }
+
+  function closeDragElement() {
+    document.onmouseup = null;
+    document.onmousemove = null;
+  }
+}
+
+function setDraggableElementsInitialPosition() {
+  setInitialPosition(document.getElementById("corgi"), -100, 400);
+  setInitialPosition(document.getElementById("loona"), -300, -100);
+  setInitialPosition(document.getElementById("pachimari"), 300, -180);
+  setInitialPosition(document.getElementById("sushi"), -100, -360);
+}
+
+function setInitialPosition(element, top, left) {
+  var anchor = document.getElementById("anchor");
+  if (!element) return;
+  element.style.top = anchor.offsetTop - top + "px";
+  element.style.left = anchor.offsetLeft - left + "px";
+}
